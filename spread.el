@@ -7,10 +7,27 @@
 (org-todo "DONE")
 
 ;; interate over tasks
-(mapcar
+(defvar tasks (mapcar
  (lambda (task)
-   (local--task-prop (car (cdr task)) :title))
- todos)
+   (local--task-prop (car (cdr task)) :ID))
+ todos))
+
+;; 3 7 11
+
+
+(defun complete-tasks (tasks)
+  ;; Given a list complete the tasks
+  (mapcar
+   (lambda (task)
+     (if (local--task-prop (car (cdr task)) :deadline)
+         (progn
+           (org-id-goto (local--task-prop (car (cdr task)) :ID))
+           (org-todo "DONE"))
+         (message "fail")))
+   tasks)
+  (save-buffer))
+
+(complete-tasks todos)
 
 
 (with-temp-buffer "teste"
