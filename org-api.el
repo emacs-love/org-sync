@@ -12,7 +12,8 @@
     (set-buffer (find-file-noselect (car (org-id-find (get-headline-prop headline :ID)))))
     (goto-char (cdr (org-id-find (get-headline-prop headline :ID))))
     (move-marker (org-id-find (get-headline-prop headline :ID) 'marker) nil)
-    (org-todo status)))
+    (org-todo status)
+    (save-buffer)))
 
 
 
