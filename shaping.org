@@ -1,0 +1,33 @@
+* Shaping
+** What are the raw ideas about this?
+Be able to sync org TODO between devices
+** What made us or the client need this?
+I want to be able to know my TODOs in other places than my computer
+** What else do we know about the problem?
+Today is hard to archive this, you can sync your org-files through webdav, dropbox, git and use some org-parse/software on mobile.
+** How does it work today?
+Doesn't work
+** Which problems we face?
+
+** Which systems are involved today?
+emacs, org-mode
+
+
+* Strategies
+** org-id
+#+begin_src elisp
+
+  (org-id-goto)
+  (org-todo "DONE")
+
+#+end_src
+** org-ql
+
+* Tools
+- org-id
+- org-ql
+
+* Usefull links
+- [[https://emacs.stackexchange.com/questions/299/how-can-i-run-an-async-process-in-the-background-without-popping-up-a-buffer][Work with buffers in background]]
+- [[https://github.com/m-cat/org-recur][Org recurring tasks]]
+
