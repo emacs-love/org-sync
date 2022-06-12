@@ -1,14 +1,14 @@
 * TO DO List
-** TODO Item a0
+** DONE Item a0
 DEADLINE: <2022-06-16 Thu>
 :PROPERTIES:
 :ID:       dfd2c5aa-5bef-45fd-8ee5-9140e4e1b06e
 :END:
-** TODO Item b1
+** DONE Item Emacs b1                                                :Emacs:
 :PROPERTIES:
 :ID:       a343f01b-16c1-4658-9c46-13d0862fe8c1
 :END:
-** TODO Item c2
+** DONE Item c2
 :PROPERTIES:
 :ID:       8f3a9449-0b3e-4075-aa62-708d3532081e
 :END:
@@ -16,55 +16,55 @@ DEADLINE: <2022-06-16 Thu>
 :PROPERTIES:
 :ID:       6642ea69-b884-4e8b-bef1-e6b3c80c1716
 :END:
-** TODO Item e4
+** DONE Item Emacs e4                                                :Emacs:
 :PROPERTIES:
 :ID:       2f2ba307-5b58-4858-a5d7-8868768c513a
 :END:
-** TODO Item f5
+** DONE Item f5
 :PROPERTIES:
 :ID:       76a0500c-d235-44e3-848f-92bcb9842d30
 :END:
-** TODO Item g6
+** DONE Item g6
 :PROPERTIES:
 :ID:       aad04e9e-a102-4249-969f-2a4469c82afd
 :END:
-** TODO Item h7
+** DONE Item h7
 :PROPERTIES:
 :ID:       23671440-a0de-4f64-89a3-3389d6fcb7db
 :END:
-** TODO Item i8
+** DONE Item i8
 :PROPERTIES:
 :ID:       034a7d69-e705-4147-8bf6-e0f527eabae9
 :END:
-** TODO Item j9
+** DONE Item j9
 :PROPERTIES:
 :ID:       49b66d58-ec0e-45f7-83ed-682987033834
 :END:
-** TODO Item k10
+** DONE Item k10
 :PROPERTIES:
 :ID:       e1f1f667-c9fb-48b8-b04b-44ed1548185b
 :END:
-** TODO Item l11
+** DONE Item l11
 :PROPERTIES:
 :ID:       d5cf9bac-f995-46c9-8500-5e533eb14300
 :END:
-** TODO Item m12
+** DONE Item m12
 :PROPERTIES:
 :ID:       a833cdd2-1527-41fb-8772-997ee3d03ea5
 :END:
-** TODO Item n13
+** DONE Item n13
 :PROPERTIES:
 :ID:       3d210c63-d4a2-475b-b869-51e0b4f3c4c7
 :END:
-** TODO Item o14
+** DONE Item o14
 :PROPERTIES:
 :ID:       493c50bc-966f-43f3-8c05-b52509adb8fe
 :END:
-** TODO Item p15
+** DONE Item p15
 :PROPERTIES:
 :ID:       8746142e-087f-44b5-9ffe-0c46c70e4df2
 :END:
-** TODO Item q16
+** DONE Item q16
 :PROPERTIES:
 :ID:       b6fd4812-daf6-4e0e-8bc8-18b1bbb1c9f0
 :END:
