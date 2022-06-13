@@ -1,9 +1,11 @@
-(add-to-list 'load-path "./org-api.el")
+(load-file "./org-api.el")
+(load-file "./todoist.el")
 
 
 (defvar todos (org-ql-select "./todo.org"
                 '(and (ancestors (heading "TO DO List")) )))
 
+(print (parse-headlines todos))
 
 (defun complete-tasks (tasks)
   ;; Given a list complete the tasks
@@ -14,10 +16,6 @@
        (message "fail")))
    tasks))
 
-(complete-tasks todos)
 
 
-(mapcar
- (lambda (task) (get-headline-prop task :raw-value))
 
- todos)

@@ -1,5 +1,5 @@
 * TO DO List
-** DONE Item a0
+** TODO Item a0
 DEADLINE: <2022-06-16 Thu>
 :PROPERTIES:
 :ID:       dfd2c5aa-5bef-45fd-8ee5-9140e4e1b06e

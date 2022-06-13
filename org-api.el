@@ -1,3 +1,4 @@
+;;; -*- lexical-binding: t; -*-
 ;;; org-everywhere
 
 (defun get-headline-prop (headline prop)
@@ -15,7 +16,15 @@
     (org-todo status)
     (save-buffer)))
 
-
+(defun parse-headlines (headlines)
+  "parse headlines into alist"
+  (mapcar
+   (lambda (task)
+     (let* ((id (get-headline-prop task :ID))
+            (title (get-headline-prop task :raw-value))
+            (tasks (append `(("id" . ,id) ("title" . ,title)))))
+       tasks))
+   headlines))
 
 (defun org-api ()
   "Call out other general customization functions."
