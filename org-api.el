@@ -22,7 +22,23 @@
    (lambda (task)
      (let* ((id (get-headline-prop task :ID))
             (title (get-headline-prop task :raw-value))
+            (deadline (get-headline-prop task :deadline))
             (tasks (append `(("id" . ,id) ("title" . ,title)))))
+       tasks))
+   headlines))
+
+(defun setup-sync-headlines (headlines)
+  "parse headlines into alist"
+  (mapcar
+   (lambda (task)
+     (let* ((id (get-headline-prop task :ID))
+            (title (get-headline-prop task :raw-value))
+            (deadline (get-headline-prop task :deadline))
+            (tasks (append `(
+                             ("type"."item_add")
+                             ("temp_id" . ,id)
+                             ("uuid" . ,id)
+                             ("args" . (("content" . ,title)))))))
        tasks))
    headlines))
 
