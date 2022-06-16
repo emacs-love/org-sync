@@ -7,6 +7,7 @@
 
 (print (parse-headlines todos))
 
+(todoist-query "POST" "/sync" `(("sync_token" . "*") ("resource_types" . "[\"items\"]") ("commands" . ,(json-encode (setup-sync-headlines todos)))))
 (defun complete-tasks (tasks)
   ;; Given a list complete the tasks
   (mapcar
