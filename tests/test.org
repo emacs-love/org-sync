@@ -1,14 +1,32 @@
 * TO DO List
+
 ** TODO Test 1
-DEADLINE: <2022-06-16 Thu>
+DEADLINE: <2022-06-16 Thu +1d>
 :PROPERTIES:
 :ID:       4289b702-ce64-4e76-8e01-1b8fe284af4f
 :END:
 
 ** TODO Test 2                                                       :Emacs:
+DEADLINE: <2022-07-21 Thu +5d>
 :PROPERTIES:
 :ID:       f7f7a2f5-6cd6-4a1a-8ec7-000998c027e2
 :END:
 
+** TODO Test 3
+:PROPERTIES:
+:ID:       98f973a9-37d5-4f6f-b1e2-ba545744c322
+:END:
+
+** TODO Test 4                                                   :cto:Emacs:
+DEADLINE: <2022-07-15 Fri .+1w>
+:PROPERTIES:
+:ID:       7256cd4a-9872-4f97-8bdc-60832280604e
+:END:
+
+** TODO Test 5
+DEADLINE: <2022-07-17 Sun ++2d>
+:PROPERTIES:
+:ID:       a29d8804-4879-4b7a-86e2-fa90b0afe023
+:END:
 
 

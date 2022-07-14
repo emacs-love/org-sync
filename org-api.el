@@ -24,14 +24,9 @@
 ;;
 ;;; Code:
 
-(defun get-headline-prop (headline prop)
-  "Get the headline prop.
-   headline is the plist from a org headline from org-element-headline-parser."
-  (plist-get (car (cdr headline)) prop))
-
-(defun update-headline-todo (headline &optional status)
+(defun update-headline-todo (headline &optiona status)
   "Update TODO status from a headline using ID."
-  (let* ((id (get-headline-prop headline :ID))
+  (let* ((id (org-element-property :ID headline))
          (location (org-id-find id))
          (file (car (org-id-find id)))
          (pos (cdr (org-id-find id))))
@@ -42,41 +37,53 @@
            (goto-char pos)
            (org-todo status)
            (save-buffer)))
-       (message "ID %s not found" id))))
+      (message "ID %s not found" id))))
+
+(defun parse-org-timestamp (timestamp)
+  "Return timestamp for todoist."
+  (let* ((unit (plist-get (car timestamp) :repeater-unit))
+         (value (plist-get (car timestamp) :repeater-value)))
+    (if (and unit value)
+        (format "every %d %s" value unit)
+      (message "missing recurring")
+      )
+
+    ))
 
 
 (defun parse-headlines (headlines)
   "parse headlines into alist"
   (mapcar
    (lambda (task)
-     (let* ((id (get-headline-prop task :ID))
-            (title (get-headline-prop task :raw-value))
-            (deadline (get-headline-prop task :deadline))
-            (tasks (append `(("id" . ,id) ("title" . ,title)))))
+     (let* ((id (org-element-property :ID task))
+            (title (org-element-property :raw-value task))
+            (deadline (org-element-property :deadline task))
+            (tasks (append `(("id" . ,id) ("title" . ,title) ("deadline" .,deadline)))))
        tasks))
    headlines))
 
-(defun setup-sync-headlines (headlines)
-  "parse headlines into alist"
+(defun tasks-waiting-sync (headlines)
+  "prepare headlines to sync"
   (mapcar
    (lambda (task)
-     (let* ((id (get-headline-prop task :ID))
-            (title (get-headline-prop task :raw-value))
-            (deadline (get-headline-prop task :deadline))
+     (let* ((id (org-element-property :ID task))
+            (title (org-element-property :raw-value task))
+            (deadline (parse-org-timestamp (cdr (org-element-property :deadline task))))
+            (tags (org-element-property :tags task))
+            (project-id 2226402041)
+            (section )
             (tasks (append `(
                              ("type"."item_add")
                              ("temp_id" . ,id)
                              ("uuid" . ,id)
-                             ("args" . (("content" . ,title)))))))
+                             ("args" . (
+                                        ("content" . ,title)
+                                        ("project_id" . ,project-id)
+                                        ("labels" . (,tags))
+                                        ;;("due_string" . ,deadline)
+                                        ))))))
        tasks))
    headlines))
 
-(defun org-api ()
-  "Call out other general customization functions."
-  (get-headline-prop)
-  (update-headline-todo))
-
 (provide 'org-api)
-
-
 
