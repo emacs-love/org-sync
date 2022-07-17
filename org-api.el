@@ -39,51 +39,5 @@
            (save-buffer)))
       (message "ID %s not found" id))))
 
-(defun parse-org-timestamp (timestamp)
-  "Return timestamp for todoist."
-  (let* ((unit (plist-get (car timestamp) :repeater-unit))
-         (value (plist-get (car timestamp) :repeater-value)))
-    (if (and unit value)
-        (format "every %d %s" value unit)
-      (message "missing recurring")
-      )
-
-    ))
-
-
-(defun parse-headlines (headlines)
-  "parse headlines into alist"
-  (mapcar
-   (lambda (task)
-     (let* ((id (org-element-property :ID task))
-            (title (org-element-property :raw-value task))
-            (deadline (org-element-property :deadline task))
-            (tasks (append `(("id" . ,id) ("title" . ,title) ("deadline" .,deadline)))))
-       tasks))
-   headlines))
-
-(defun tasks-waiting-sync (headlines)
-  "prepare headlines to sync"
-  (mapcar
-   (lambda (task)
-     (let* ((id (org-element-property :ID task))
-            (title (org-element-property :raw-value task))
-            (deadline (parse-org-timestamp (cdr (org-element-property :deadline task))))
-            (tags (org-element-property :tags task))
-            (project-id 2226402041)
-            (section )
-            (tasks (append `(
-                             ("type"."item_add")
-                             ("temp_id" . ,id)
-                             ("uuid" . ,id)
-                             ("args" . (
-                                        ("content" . ,title)
-                                        ("project_id" . ,project-id)
-                                        ("labels" . (,tags))
-                                        ;;("due_string" . ,deadline)
-                                        ))))))
-       tasks))
-   headlines))
-
 (provide 'org-api)
 
