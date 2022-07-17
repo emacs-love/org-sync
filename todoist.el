@@ -48,14 +48,15 @@
      (let* ((title (org-element-property :raw-value task))
             (due-string (get-due-string (org-element-property :deadline task)))
             (due-date (get-due-date (org-element-property :deadline task)))
+            (id (org-element-property :ID task))
             (tags (get-tags-ids (org-element-property :tags task)))
-            (temp-id (org-id-new))
+            (temp-id )
             (project-id "2226402041")
             (section )
             (tasks (append `(
                              ("type"."item_add")
-                             ("temp_id" . ,temp-id)
-                             ("uuid" . ,(substring temp-id 26 35))
+                             ("temp_id" . ,id)
+                             ("uuid" . ,(org-id-new))
                              ("args" . (
                                         ("project_id" . ,project-id)
                                         ("content" . ,title)
@@ -84,10 +85,15 @@
 
 (defun push-tasks (tasks)
   "Send tasks to Todoist."
-  (request-response-data
+  (setq response (request-response-data
    (todoist-query
     "POST"
     "/sync"
     `(("sync_token" . "*") ("resource_types" . "[\"items\"]")
       ("commands" . ,(json-encode (tasks-waiting-sync tasks)))))))
+
+  (mapcar (lambda (temp-id)
+            (cdr temp-id))
+          (cdr (assoc 'temp_id_mapping response)))
+
 
